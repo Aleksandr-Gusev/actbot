@@ -1,0 +1,243 @@
+{%load static%}  <!-- #чтобы была возможность подключать статические файлы -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {%static 'app_ava/css/index.css' %}">
+    
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            Act<span>Bot</span>
+        </div>
+            <div class="btn_logout"></div>
+            <!-- Форма для выхода (logout) -->
+            <form method="post" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="icon-button">
+                    <img src="../static/app_ava/img/logout.png" alt="Иконка" width="20" height="20">
+                    
+                </button>
+            </form>
+        
+        <div class="fio">
+            {{user_name}} {{user_second_name}} {{user_surname}}
+        </div>
+    </div>
+    <div class="wrapper">
+    <div class="container">
+        <div class="in">
+            <p class="p1">Введите данные</p>
+            <!-- <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Save</button>
+            </form> -->
+    
+            <form id="form1" method="POST">
+                {% csrf_token %}
+                <!-- {{ form.as_p }} -->                     <!-- автоматически оборачивает каждое поле формы в тег <p>, делая рендеринг формы более компактным и простым. -->
+                <ul>
+                    <div class="wrap" id="w1">
+
+                        <div class="d1">
+                            <label for="li5">Номер договора</label>
+                            <li id="li5">{{ form.number_contact }}</li>
+                        </div>
+                        <div class="d2">
+                            <label for="li6">Дата договора</label>
+                            <li id="li6">{{ form.date_contact }}</li>
+                        </div>
+                    
+                    </div>
+                    <div class="wrap">
+                        <div id="w2">
+                            <label for="li9">Проект</label>
+                            <li id="li9">{{ form.project }}</li>
+                        </div>
+                    
+                    </div>
+                    <div class="wrap" id="w3">
+                        <div class="d3">
+                            <label for="li11">Дата начала оказания услуг</label>
+                            <li id="li11">{{ form.date_start }}</li>
+                        </div>
+                        <div class="d4">
+                            <label for="li12">Дата окончания оказания услуг</label>
+                            <li id="li12">{{ form.date_end }}</li>
+                            
+                        </div>
+                
+                    </div>
+                    
+                    
+                    <!-- <label for="stavka">Ставка</label>
+                    <li id="stavka" value="0.00">{{ form.stavka }}</li> -->
+                    <div>
+                        <label for="li8">Номер акта</label>
+                        <li id="li8">{{ form.number_act }}</li>
+                    </div>
+                    <div class="wrap" id="w4">
+                        <div class="d5">
+                            <li>
+                                <label for="id_time">Трудозатраты</label>
+                                <input type="number" placeholder="0,00" id="id_time" name="time_of_work" step="0.01" min="0" required value="{{ form.time_of_work|floatformat:2 }}">
+                            </li>
+                        </div>
+                        <div class="d6">
+                            <li>
+                                <label for="id_stavka">Ставка</label>
+                                <input type="number" placeholder="0,00" id="id_stavka" name="stavka" step="0.01" min="0" required value="{{ form.stavka|floatformat:2 }}">
+                            </li>
+                        </div>
+                    </div>
+                    
+                    <!-- <label for="li13">Трудозатраты</label>
+                    <li id="li13">{{ form.time_of_work }}</li> -->
+                    <label for="li14">Какие работы выполнены</label>
+                    <li id="li14">{{ form.name_of_work }}</li>
+                    <label for="li15">Результат работы</label>
+                    <li id="li15">{{ form.result_of_work }}</li>
+                </ul>
+                <button type="submit" class="button2">Отправить</button>
+            </form>
+
+        </div>
+        
+        <div class="out">
+            <p></p>
+            <!-- <ul id="output_data">
+                {%for record in records%}
+                    <li>{{record.created_at}} договор {{record.number_contact}} от {{record.date_contact}} {{record.total}}</li>
+                {% endfor %}
+            </ul> -->
+            <table style="width:100%">
+                <tr>
+                  <th>Создан</th>
+                  <th>Проект</th>
+                  <th>Период оказания услуг</th>
+                  <th>Трудозатраты</th>
+                  <th>Статус</th>
+
+      
+                </tr>
+                {%for record in records%}   
+                    <tr>
+                        <td class="td1">{{record.created_at|date:"d-m-Y"}}</td>
+                        
+                        <td class="td2">{{record.project}}</td>
+                       
+                        <td class="td3"> c {{record.date_start}} <br> по {{record.date_end}}</td>
+                        <td class="td4">{{record.time_of_work}}</td>
+                        {%if record.status == "Complete"%} 
+                            <td class="td5">
+                                
+                                <div style="width: 120px; height: 20px;display: flex; align-items: center; padding: 0px; font-size: 12px; color:#019a6c;">
+                                    <!-- <div class="status-indicator"></div> -->
+                                    Данные верны
+                                </div>
+                            </td>
+            
+                        {%elif record.status == "Error"%} 
+                            <td class="td5_error" onclick="toggleDiv(this)">
+                                Требуется проверка
+                                <div class="container2">
+                                    <!-- <div class="content" style="width: 126px; height: 20px;display: flex; align-items: center; font-size: 10px;">
+                                        <div class="status-indicator_red"></div>
+                                        <span class="clickable-text" onclick="toggleModal()">Требуется проверка</span>
+                                        <div class="hidden-div">Требуется проверка</div>
+                                    </div> -->
+                                    <div class="hidden-div" style="width: 190px; font-size: 10px; color: #8f8f8f;">{{record.text_error}}</div>
+                                    <!-- Модальное окно -->
+                                    <!-- <div id="modal" class="modal">
+                                        <div class="modal-content">
+                                            <p>{{record.text_error}}</p>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </td>
+                
+                        {%else%} 
+                         
+                            <td class="td5">{{record.status}}</td>
+                        {%endif%} 
+                        
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+// Функция для обработки ввода с маской 0.00
+function formatInput(input) {
+        input.addEventListener('focus', function() {
+            if (input.value === '0.00') {
+                input.value = ''; // Убираем 0.00 при фокусе
+            }
+        });
+
+        input.addEventListener('input', function(e) {
+            let value = e.target.value;
+
+            // Убираем все, что не цифры или точка
+            value = value.replace(/[^0-9.]/g, '');
+
+            // Если точка отсутствует, добавляем '.00'
+            if (value.indexOf('.') === -1) {
+                value += '.00';  // Если нет точки, добавляем '.00'
+            }
+
+            // Ограничиваем два знака после запятой
+            let parts = value.split('.');
+            if (parts[1]) {
+                parts[1] = parts[1].slice(0, 2); // Оставляем только два знака после запятой
+            }
+
+            e.target.value = parts.join('.');  // Обновляем значение
+        });
+
+        input.addEventListener('blur', function() {
+            if (input.value === '' || input.value === '.') {
+                input.value = '0.00'; // Восстанавливаем 0.00, если поле пустое
+            }
+        });
+    }
+
+    // Применяем форматирование для обоих инпутов
+    formatInput(document.getElementById('id_stavka'));
+    formatInput(document.getElementById('id_time'));
+
+function toggleModal() {
+    const modal = document.getElementById('modal');
+    modal.classList.toggle('open');
+}
+
+// Закрытие модального окна при клике вне его области
+document.addEventListener('click', function (event) {
+    const modal = document.getElementById('modal');
+    const clickableText = document.querySelector('.clickable-text');
+
+    // Если клик был вне модального окна и не по кликабельному тексту
+    if (!modal.contains(event.target) && event.target !== clickableText) {
+        modal.classList.remove('open');
+    }
+});
+
+function toggleDiv(tdElement) {
+            const div = tdElement.querySelector('.hidden-div');
+            div.classList.toggle('visible');
+        }
+
+
+</script>
+</body>
+
+</html>
+
+

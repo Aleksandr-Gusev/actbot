@@ -1,0 +1,138 @@
+{%load static%}  <!-- #чтобы была возможность подключать статические файлы -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {%static 'app_ava/css/reg.css' %}">
+    
+</head>
+<body>
+
+
+<!-- <h2>Регистрация</h2> -->
+<!-- <div class="login-page">
+    <div class="form">
+<form class="login-form" method="post">
+    {% csrf_token %}
+    
+    <ul>
+        <label for="li1">Введите имя</label>
+        <li id="li1">{{ form.user_name }}</li>
+        <label for="li2">Введите отчество</label>
+        <li id="li2">{{ form.user_second_name }}</li>
+        <label for="li3">Введите фамилию</label>
+        <li id="li3">{{ form.user_surname }}</li>
+        <label for="li4">Введите email</label>
+        <li id="li4">{{ form.user_email }}</li>
+        <label for="li5">Введите город</label>
+        <li id="li5">{{ form.user_town }}</li>
+        <label for="li6">Организационно-правовая форма</label>
+        <li id="li6">
+            <select id="li6" name="type_of_worker">
+                <option value="Self-employed">Самозанятый</option>
+                <option value="IP">Индивидуальный предприниматель</option>
+            </select>
+        </li>
+        <label for="li7">Введите пароль</label>
+        <li id="li7">{{ form.password1 }}</li>
+        <label for="li8">Подтвердите пароль</label>
+        <li id="li8">{{ form.password2 }}</li>
+    </ul>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+{% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+{% endif %}
+<p>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+</div>
+</div> -->
+
+<div class="login-page">
+    <div class="form">
+      <form class="login-form" method="post">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.user_name.errors }}
+            </div>
+            <input type="text" id="login" class="fadeIn second" name="{{ form.user_name.name }}" placeholder="Введите имя" value="{{ form.data.user_name|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.user_second_name.errors }}
+            </div>
+            <input type="text" id="login" class="fadeIn second" name="{{ form.user_second_name.name }}" placeholder="Введите отчество" value="{{ form.data.user_second_name|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.user_surname.errors }}
+            </div>
+            <input type="text" id="login" class="fadeIn second" name="{{ form.user_surname.name }}" placeholder="Введите фамилию" value="{{ form.data.user_surname|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.user_email.errors }}
+            </div>
+            <input type="text" id="login" class="fadeIn second" name="{{ form.user_email.name }}" placeholder="Введите email" value="{{ form.data.user_email|default_if_none:'' }}">
+        </div>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.user_town.errors }}
+            </div>
+            <input type="text" id="login" class="fadeIn second" name="{{ form.user_town.name }}" placeholder="Введите город" value="{{ form.data.user_town|default_if_none:'' }}">
+        </div>
+        
+        <select class="fadeIn second" name="type_of_worker">
+            <option value="Self-employed">Самозанятый</option>
+            <option value="IP">Индивидуальный предприниматель</option>
+        </select>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.password1.errors }}
+            </div>
+            <input type="password" id="password" class="fadeIn third" name="{{ form.password1.name }}" placeholder="Введите пароль">
+        </div>
+        <div class="form-group">
+            <!-- Ошибка для поля user_name -->
+            <div class="error-message" style="color: red; font-size:10px">
+                {{ form.password2.errors }}
+            </div>
+            <input type="password" id="password" class="fadeIn third" name="{{ form.password2.name }}" placeholder="Подтвердите пароль">
+        </div>
+        
+        <button type="submit">Зарегистрироваться</button>
+        <p class="message">Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></p>
+      </form>
+
+        <!-- {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %} -->
+    </div>
+</div>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{%load static%}  <!-- #чтобы была возможность подключать статические файлы -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Save Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href=" {%static 'app_ava/css/login.css' %}">
+    
+</head>
+<body>
+
+
+<div class="login-page">
+  <div class="form">
+    <form class="register-form">
+      
+    </form>
+    <form class="login-form" method="post">
+      <div>
+        <div class="logo">
+            Act<span>Bot</span>
+        </div>
+      </div>
+      {% csrf_token %}
+
+      {% if messages %}
+          <div class="messages" style="color: red; font-size:12px">
+              {% for message in messages %}
+                  <p style="margin:0;">{{ message }}</p>
+              {% endfor %}
+          </div>
+      {% endif %}
+
+      <input type="text" id="login" class="fadeIn second" name="{{ form.username.name }}" placeholder="Логин (email до @)">
+        
+      <input type="password" id="password" class="fadeIn third" name="{{ form.password.name }}" placeholder="Пароль">
+      <button type="submit">Войти</button>
+      <p class="message">Нет аккаунта? <a href="{% url 'register' %}">Зарегистрироваться</a></p>
+
+    </form>
+  </div>
+</div>
+
+
+
+</body>
+
+</html>

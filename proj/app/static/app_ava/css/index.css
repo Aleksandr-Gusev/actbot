@@ -1,0 +1,530 @@
+:root {
+   --main-color: #019a6c; /* Определяем переменную с цветом */
+   --secondary-color: #9a012f; /* Еще одна переменная */
+   --back-color: #F7F7F7;
+ }
+
+html{
+   box-sizing: border-box;
+   margin: 0;
+   padding: 0;
+}
+
+body{
+   display: flex;
+   flex-direction: column;
+   margin: 0;
+   padding: 0;
+   
+   background-color: var(--back-color);
+   font-family: 'Roboto', sans-serif;
+}
+
+
+.container{
+   display: flex;
+   flex-direction: row;
+   padding: 0px 0px 0px 0px;
+   max-width: 1300px;
+   background-color: var(--back-color);
+   margin-top: 6px;
+   box-sizing: border-box;
+   height: 100%;
+   position: relative;
+   width: 100vw;
+   
+}
+
+.header{
+   
+   display: flex;
+   flex-direction: row;
+   width: 100%;
+   background-color: #ffffff;
+   height: 40px;
+   border: none;
+   border-radius: 0px;
+   box-sizing: border-box;
+   box-shadow: 1px 22px 24px -15px #1111112f;
+   align-items: center;      /* Выравнивание по вертикали */
+}
+
+.wrapper{
+   display: flex;
+   justify-content: center;
+}
+
+li{
+   list-style: none;
+   width: 100%;
+   box-sizing: border-box;
+   margin: 0; /* Убираем отступы у элемента списка */
+   padding: 0px 10px; /* Убираем внутренние отступы, если они есть */
+}
+
+form{
+   box-sizing: border-box;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+input{
+   width: 100%;
+   box-sizing: border-box;
+
+   font-family: 'Roboto', sans-serif;
+   background-color: #ffffff;
+   color: #858585;
+   padding: .15rem .5rem;
+   min-height: 40px;
+   border-radius: 4px;
+   outline: none;
+   border: 2px solid #edf0f1; /* Серая рамка */
+   line-height: 1.15;
+   box-shadow: 0px 10px 20px -18px;
+   }
+   
+   input:focus {
+   border-bottom: 2px solid var(--main-color);
+   border-radius: 4px 4px 2px 2px;
+   
+   }
+   
+   input:hover {
+   outline: 1px solid rgb(255, 255, 255);
+   }
+
+label{
+   font-size: 12px;
+   margin: 0;
+   display: block; /* Сделаем label блочным элементом (по умолчанию оно блочное) */
+
+   font-size: 0.60rem;
+   color: #858585;
+   font-weight: 300;
+   position: relative;
+   top: 0.5rem;
+   left: 0.5rem;
+   margin: 0 0 0 7px;
+   padding: 0 3px;
+   background: #ffffff;
+   width: fit-content;
+    
+}
+
+.in{
+   
+   width: 30%;
+   min-width: 300px;
+   box-shadow: 1px 22px 24px -15px #1111112f;
+   padding: 10px 10px 10px 10px;
+   background-color: #ffffff;
+   border: 2px solid #edf0f1; /* Серая рамка */
+   height: 80vh;
+   box-sizing: border-box;
+   
+}
+
+.out{
+   background-color: #ffffff;
+   width: 70%;
+   box-shadow: 1px 22px 24px -15px #1111112f;
+   border: 2px solid #edf0f1; /* Серая рамка */
+   padding: 10px 20px 10px 20px;
+   height: 80vh;
+   /* max-height: 300px; /* Максимальная высота блока */ 
+   /* overflow-y: auto;  /* Вертикальная прокрутка появляется при необходимости */ 
+   overflow-y: scroll;
+}
+
+div{
+   
+   border-radius: 8px;
+   box-sizing: border-box;
+}
+
+ul{
+   
+   padding: 0;
+}
+
+th {
+   text-align: left;
+   color: #858585;
+   font-size: 10px;
+   font-weight: 300;
+   
+}
+
+tr {
+   text-align: left;
+   color: #333333;
+   font-size: 12px;
+   font-weight: 300;
+   
+}
+
+td {
+   padding: 20px 0px; /* Увеличиваем вертикальное расстояние */
+}
+
+.in1{
+   
+   border: 2px solid #edf0f1; /* Серая рамка */
+}
+
+.wrap{
+   display: flex;
+   flex-direction: row;
+   
+}
+
+#w1{
+   width: 100%;
+   margin-bottom: 20px;
+}
+#w2{
+   width: 100%;
+  
+}
+
+#w3{
+   width: 100%;
+   margin-bottom: 20px;
+}
+#w4{
+   width: 100%;
+   margin-bottom: 20px;
+}
+
+.d1{
+   width: 50%;
+}
+
+.d2{
+   width: 50%;
+}
+
+.d3, .d4{
+   width: 50%;
+}
+
+.d5, .d6{
+   width: 50%;
+   box-sizing: border-box;
+}
+
+#li9{
+   width: 100%;
+}
+#id_project{
+   width: 100%;
+}
+
+/* .button2 {
+   display: inline-block;
+   transition: all 0.2s ease-in;
+   position: relative;
+   overflow: hidden;
+   z-index: 1;
+   color: #090909;
+   
+   cursor: pointer;
+   font-size: 16px;
+   border-radius: 0.5em;
+   background: #ffffff;
+   border: 0.5px solid #c5c5c5;
+   box-shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+   height: 40px;
+   width: 100%;
+   padding: 0px 10px;
+ }
+ 
+.button2:active {
+   color: #666;
+   box-shadow: inset 4px 4px 12px #c5c5c5, inset -4px -4px 12px #ffffff;
+}
+ 
+.button2:before {
+   content: "";
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%) scaleY(1) scaleX(1.25);
+   top: 100%;
+   width: 140%;
+   height: 180%;
+   background-color: rgba(0, 0, 0, 0.05);
+   border-radius: 50%;
+   display: block;
+   transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+   z-index: -1;
+}
+ 
+.button2:after {
+   content: "";
+   position: absolute;
+   left: 55%;
+   transform: translateX(-50%) scaleY(1) scaleX(1.45);
+   top: 180%;
+   width: 160%;
+   height: 190%;
+   background-color: var(--main-color);
+   border-radius: 50%;
+   display: block;
+   transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+   z-index: -1;
+}
+ 
+.button2:hover {
+   color: #ffffff;
+   border: 1px solid var(--main-color);
+}
+ 
+.button2:hover:before {
+   top: -35%;
+   background-color: var(--main-color);
+   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+}
+ 
+.button2:hover:after {
+   top: -45%;
+   background-color: var(--main-color);
+   transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+} */
+
+span{
+   color: var(--main-color);
+}
+
+.logo{
+   font-size: 22px;
+   display: flex;
+   align-items: center;      /* Выравнивание по вертикали */
+   height: 40px;
+   width: 70px;
+   margin-left: 60px;
+}
+
+.fio{
+   font-size: 12px;
+   font-weight: 100;
+   display: flex;
+   align-items: center;      /* Выравнивание по вертикали */
+   height: 40px;
+   width: 200px;
+   margin-left: 10px;
+}
+
+.btn_logout{
+   font-size: 14px;
+   display: flex;
+   align-items: center;      /* Выравнивание по вертикали */
+   height: 40px;
+   width: 40px;
+   margin-left: 22px;
+}
+
+.logout-button{
+   background-color: #ffffff;
+   border: none;
+   width: 30px;
+   height: 30px;
+   font-size: 12px;
+   font-weight: 300;
+   border-radius: 8px;
+   
+}
+
+.logout-button:hover {
+   background-color: var(--main-color); /* Цвет фона при наведении */
+   color: white; /* Цвет текста при наведении */
+   
+   cursor: pointer; /* Курсор при наведении */
+ }
+
+ .p1{
+   font-size: 16px;
+   display: flex;
+   align-items: center;      /* Выравнивание по вертикали */
+   margin-left: 10px;
+ }
+
+ .td1, .td4{
+   width: 80px;
+ }
+
+ .td3{
+   width: 130px;
+ }
+
+ .td5{
+   width: 190px;
+
+ }
+
+ .td5_error{
+   width: 190px;
+   cursor: pointer; /* Меняем курсор при наведении */
+   color: #ed5151;
+ }
+
+/* Стили для строки таблицы */
+table tr {
+   transition: background-color 0.3s ease; /* Плавное изменение фона */
+ }
+
+table tr:hover {
+   background-color: #f7fefd; /* Серый цвет фона при наведении */
+ }
+
+ /* Дополнительные стили для таблицы */
+table {
+   width: 100%;
+   border-collapse: collapse;
+ }
+ 
+ table th, table td {
+   padding: 10px;
+   
+ }
+ 
+ table th {
+   background-color: #ffffff;
+   text-align: left;
+ }
+
+ /* Стили для кружка */
+.status-indicator {
+   
+   width: 10px;  /* Размер кружка */
+   height: 10px;
+   background-color: var(--main-color);  /* Цвет кружка */
+   border-radius: 50%;  /* Округлая форма (кружок) */
+   margin-right: 20px;
+ }
+
+.status-indicator_red {
+
+   width: 10px;  /* Размер кружка */
+   height: 10px;
+   background-color:var(--secondary-color);  /* Цвет кружка */
+   border-radius: 50%;  /* Округлая форма (кружок) */
+   padding-right: 10px ;
+}
+
+
+/* Основные стили для контейнера */
+.container2 {
+   position: relative;
+   width: 140px;
+   /* border: 1px solid #ccc; */
+   padding: 0px;
+   margin: 0px;
+}
+
+/* Стили для кликабельного текста */
+.clickable-text {
+   color: var(--secondary-color); /* Синий цвет, как у ссылки */
+   cursor: pointer;
+   /* text-decoration: underline; */ /* Подчёркивание, чтобы показать, что текст кликабельный */
+   width: 140px;
+   margin-left: 20px;
+}
+
+.clickable-text:hover {
+   color: #000000; /* Цвет при наведении */
+}
+
+/* Стили для модального окна */
+.modal {
+   display: none; /* Скрыто по умолчанию */
+   position: absolute;
+   top: 100%; /* Располагается под div */
+   left: -200px;
+   width: 200px;
+   background-color: white;
+   border: 1px solid #ccc;
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+   z-index: 10;
+}
+
+/* Стили для содержимого модального окна */
+.modal-content {
+   padding: 10px;
+}
+
+/* Анимация для появления модального окна */
+@keyframes slideDown {
+   from {
+       opacity: 0;
+       transform: translateY(-10px);
+   }
+   to {
+       opacity: 1;
+       transform: translateY(0);
+   }
+}
+
+.modal.open {
+   display: block;
+   animation: slideDown 0.3s ease-out;
+}
+
+input::placeholder {
+   color: rgb(190, 190, 190); /* Вы можете задать любой цвет */
+   opacity: 1; /* Устанавливает непрозрачность, значение от 0 до 1 */
+}
+.button2 {
+ display: block;
+ font-family: "Roboto", sans-serif;
+ text-transform: uppercase;
+ outline: 0;
+ background: var(--main-color);
+ width: calc(100% - 20px);
+ border: 0;
+ padding: 15px 0;
+ border-radius: 8px;
+ 
+ color: #FFFFFF;
+ font-size: 14px;
+ -webkit-transition: all 0.3 ease;
+ transition: all 0.3 ease;
+ cursor: pointer;
+}
+.button2:hover,.button2:active,.button2:focus {
+ background: #0faa7c;
+}
+
+.hidden-div {
+   overflow: hidden; /* Скрываем содержимое, выходящее за пределы */
+   max-height: 0; /* Начальная высота */
+   transition: max-height 0.5s ease; /* Плавное изменение высоты */
+}
+
+.hidden-div.visible {
+   max-height: 100px; /* Максимальная высота (подберите под ваш контент) */
+}
+
+.icon-button {
+   background-color: #ffffff;
+   border: none;
+   color: white;
+   padding: 6px 6px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 5px;
+ }
+
+ .icon-button:hover{
+   background-color: #ebebeb;
+ }
+
+
+ .icon-button img {
+   vertical-align: middle;
+   
+ }
