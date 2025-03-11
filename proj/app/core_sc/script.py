@@ -47,7 +47,7 @@ def get_data_from_jira(project, stavka, date_start, date_end, time_of_work, user
     print(f'данные передались - {project} {stavka} {date_start} {date_end} {time_of_work} {user_name} {user_second_name} {user_surname} {user_email} {user_town} {type_of_worker}')
     print('>>> Подключение к JIRA...')
     #jira = JIRA(server='https://jira.i-sol.eu', basic_auth=('tcontrol', '1voUP1')) #старая 
-    jira = JIRA(server='https://jira-new.i-sol.eu', basic_auth=('tcontrol', 'jiOZINsQ6pgA')) #новая
+    jira = JIRA(server='https://jira-new.i-sol.eu', basic_auth=('tcontrol', 'jiOZIN')) #новая
 
     # ------------------------ Ввод ФИО---------------------
     date1 = date_start
